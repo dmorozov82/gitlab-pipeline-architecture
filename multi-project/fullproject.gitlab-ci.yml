@@ -1,0 +1,18 @@
+# Full project's pipeline (downstream)
+
+build:
+  stage: build
+  script: ./build_app.sh #build all components
+
+qa-test:
+  stage: test
+  script: ./qa_test.sh
+
+smoke-test:
+  stage: test
+  script: ./smoke_test.sh
+
+deploy:
+  stage: deploy
+  script: ./deploy_app.sh
+    

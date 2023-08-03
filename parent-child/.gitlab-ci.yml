@@ -1,0 +1,19 @@
+stages:
+  - triggers
+
+build_windows:
+  stage: triggers
+  trigger:
+    include: .win-gitlab-ci.yml
+  rules:
+    - changes:
+      - cpp_app/*
+
+build_linux:
+  stage: triggers
+  trigger:
+    include: .linux-gitlab-ci.yml
+  rules:
+    - changes:
+      - cpp_app/*
+      

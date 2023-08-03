@@ -1,0 +1,22 @@
+build:ios:
+  stage: build
+  script:
+    - echo "Building for iOS"
+    - sleep 10
+
+build:android:
+  stage: build
+  script:
+    - echo "Building for Android"
+
+test:ios:
+  stage: test
+  needs: ["build:ios"]
+  script:
+    - echo "Testing for iOS"
+
+test:android:
+  stage: test
+  needs: ["build:android"]
+  script:
+    - echo "Testing for Android"

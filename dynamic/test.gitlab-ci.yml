@@ -1,0 +1,13 @@
+stages:
+  - unit tests
+  - integration tests
+
+unit tests:
+  stage: unit tests
+  script:
+    - echo "REPLACEME"
+
+integration tests:
+  stage: integration tests
+  script:
+    - echo "REPLACEME"

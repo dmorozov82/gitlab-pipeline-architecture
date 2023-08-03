@@ -1,0 +1,27 @@
+stages:
+  - setup
+  - test
+  - finalize
+
+setup:
+  stage: setup
+  script:
+    - sed "s/REPLACEME/DynamicPipeline/g" test.gitlab-ci.yml > generated-config.yml
+  # place a generated YAML file in the Job artifact store
+  artifacts:
+    paths:
+      - generated-config.yml
+
+test: 
+  stage: test
+  trigger:
+    include:
+  # reference to artifact to actually run the pipeline
+      - artifact: generated-config.yml
+        job: setup
+    strategy: depend
+
+finalize:
+  stage: finalize
+  script:
+    -echo "Finalize Job"

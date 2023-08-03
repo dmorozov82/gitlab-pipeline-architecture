@@ -1,0 +1,15 @@
+# Component project's pipeline (upstream)
+
+build:
+  stage: build
+  script: ./build_component.sh
+
+test:
+  stage: test
+  script: ./test_component.sh
+
+deploy:
+  stage: deploy
+  trigger:
+    project: myorg/app
+    strategy: depend
